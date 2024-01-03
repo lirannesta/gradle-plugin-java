@@ -1,0 +1,15 @@
+pluginManagement {
+    repositories {
+        maven {
+            // resolve plugins
+            url "${artifactory_url}/${artifactory_gradle_plugins_resolve_repository}"
+            credentials {
+                username "${artifactory_username}"
+                password "${artifactory_password}"
+            }
+            //gradlePluginPortal()
+        }
+    }
+}
+
+rootProject.name = 'build-plugin'

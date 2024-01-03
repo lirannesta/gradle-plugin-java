@@ -1,0 +1,35 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+group = 'com.example.build' // sets where in the repository you want to publish the plugin
+version = '1.0.0'
+publishing {
+    repositories {
+        if (project.hasProperty('local.repo')) {
+            println "local repo for plugin"
+            maven { url "${rootDir}/build/repo" }
+        } else {
+            println "remote repo for plugin"
+            maven {
+                // resolve dependencies
+                url "${artifactory_url}/${artifactory_publish_repository}"
+                credentials {
+                    username "${artifactory_username}"
+                    password "${artifactory_password}"
+                }
+            }
+        }
+    }
+}
+
+
+gradlePlugin {
+    plugins {
+        simplePlugin {
+            id = 'com.example.build'
+            implementationClass = 'com.example.build.BuildPlugin'
+        }
+    }
+}
+
