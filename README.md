@@ -46,6 +46,7 @@ To publish the plugin to your internal Maven repository, execute:
 ## published artifacts:
 The published artifact consist of a marker for the plugin , as well as the packaged plugin artifact
 [YOUR_REPOSITORY_NAME]
+
     com
         build
             com.example.build.gradle.plugin <--------------------------The marker
